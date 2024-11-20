@@ -1,5 +1,7 @@
 package me.devksh930.hr.domain.entity;
 
+import java.math.BigDecimal;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -21,17 +23,17 @@ public class Job {
 
 	private String jobTitle;
 
-	@Column(nullable = false)
-	private Double minSalary;
+	@Column(name = "min_salary", columnDefinition = "DECIMAL")
+	private BigDecimal minSalary;
 
-	@Column(nullable = false)
-	private Double maxSalary;
+	@Column(name = "max_salary", columnDefinition = "DECIMAL")
+	private BigDecimal maxSalary;
 
 	public Job(
 		final String jobId,
 		final String jobTitle,
-		final Double minSalary,
-		final Double maxSalary
+		final BigDecimal minSalary,
+		final BigDecimal maxSalary
 	) {
 		this.jobId = jobId;
 		this.jobTitle = jobTitle;

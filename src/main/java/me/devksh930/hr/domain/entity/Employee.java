@@ -1,5 +1,6 @@
 package me.devksh930.hr.domain.entity;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
 import jakarta.persistence.Column;
@@ -15,17 +16,11 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(
-	name = "employees",
-	uniqueConstraints = {
-		@UniqueConstraint(name = "uk_employees_email", columnNames = "email")
-	},
-	indexes = {
-		@Index(name = "idx_employees_department_id", columnList = "department_id"),
-		@Index(name = "idx_employees_manager_id", columnList = "manager_id"),
-		@Index(name = "idx_employees_job_id", columnList = "job_id")
-	}
-)
+@Table(name = "employees", uniqueConstraints = {
+	@UniqueConstraint(name = "uk_employees_email", columnNames = "email")}, indexes = {
+	@Index(name = "idx_employees_department_id", columnList = "department_id"),
+	@Index(name = "idx_employees_manager_id", columnList = "manager_id"),
+	@Index(name = "idx_employees_job_id", columnList = "job_id")})
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Employee {
@@ -47,9 +42,10 @@ public class Employee {
 	@JoinColumn(name = "job_id", nullable = false)
 	private Job job;
 
-	@Column(nullable = false)
-	private Double salary;
+	@Column(nullable = false, columnDefinition = "decimal")
+	private BigDecimal salary;
 
+	@Column(name = "commission_pct", columnDefinition = "decimal")
 	private Double commissionPct;
 
 	@ManyToOne
@@ -68,7 +64,7 @@ public class Employee {
 		final String phoneNumber,
 		final LocalDate hireDate,
 		final Job job,
-		final Double salary,
+		final BigDecimal salary,
 		final Double commissionPct,
 		final Employee manager,
 		final Department department

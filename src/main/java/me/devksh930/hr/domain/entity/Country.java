@@ -1,5 +1,6 @@
 package me.devksh930.hr.domain.entity;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Index;
@@ -22,6 +23,7 @@ import lombok.NoArgsConstructor;
 public class Country {
 
 	@Id
+	@Column(name = "country_id", columnDefinition = "CHAR")
 	private String countryId;
 
 	private String countryName;

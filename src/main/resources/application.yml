@@ -12,12 +12,14 @@ spring:
         format_sql: true
 
   datasource:
-    url: jdbc:mysql://localhost:3306/special_price
+    url: jdbc:mysql://localhost:3306/hr
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: root
     password: spring123
 
 logging:
   level:
+    org.springframework.jdbc.core: debug
     org.hibernate.type.descriptor.sql: trace
     org.hibernate.sql: debug
+    org.springframework.jdbc: DEBUG
