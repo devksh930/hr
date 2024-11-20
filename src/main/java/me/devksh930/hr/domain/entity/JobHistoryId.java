@@ -1,4 +1,4 @@
-package me.devksh930.hr.domain;
+package me.devksh930.hr.domain.entity;
 
 import java.io.Serializable;
 import java.time.LocalDate;
