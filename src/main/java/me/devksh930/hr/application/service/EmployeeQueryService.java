@@ -8,7 +8,9 @@ import org.springframework.transaction.annotation.Transactional;
 import lombok.RequiredArgsConstructor;
 import me.devksh930.hr.application.mapper.EmployeeMapper;
 import me.devksh930.hr.common.util.PagingUtils;
+import me.devksh930.hr.dto.response.EmployeeDetailQueryResponse;
 import me.devksh930.hr.dto.response.EmployeeQueryResponse;
+import me.devksh930.hr.exception.EmployeeNotFoundException;
 import me.devksh930.hr.infrastructure.query.EmployeeQueryDao;
 
 @Service
@@ -30,4 +32,13 @@ public class EmployeeQueryService {
 			employeeQueryDao.countEmployee()
 		);
 	}
+
+	public EmployeeDetailQueryResponse queryEmployeeDetail(
+		final Integer employeeId
+	) {
+		return employeeQueryDao.findEmployeeById(employeeId)
+			.map(employeeMapper::employeeDetailQueryToResponse)
+			.orElseThrow(EmployeeNotFoundException::new);
+	}
+
 }

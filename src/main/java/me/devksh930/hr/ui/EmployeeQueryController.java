@@ -4,6 +4,7 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import me.devksh930.hr.application.service.EmployeeQueryService;
+import me.devksh930.hr.dto.response.EmployeeDetailQueryResponse;
 import me.devksh930.hr.dto.response.EmployeeQueryResponse;
 
 @RestController
@@ -29,6 +31,13 @@ public class EmployeeQueryController {
 			page,
 			size
 		)));
+	}
+
+	@GetMapping("/{employeeId}")
+	public ResponseEntity<EmployeeDetailQueryResponse> queryEmployeeDetail(
+		@PathVariable final int employeeId
+	) {
+		return ResponseEntity.ok(employeeQueryService.queryEmployeeDetail(employeeId));
 	}
 
 }
