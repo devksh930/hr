@@ -10,6 +10,8 @@ import me.devksh930.hr.domain.entity.Employee;
 import me.devksh930.hr.domain.entity.Job;
 import me.devksh930.hr.domain.entity.JobHistory;
 import me.devksh930.hr.dto.command.EmployeeJobChangeCommand;
+import me.devksh930.hr.exception.EmployeeNotFoundException;
+import me.devksh930.hr.exception.JobNotFoundException;
 import me.devksh930.hr.infrastructure.command.EmployeeRepository;
 import me.devksh930.hr.infrastructure.command.JobHistoryRepository;
 import me.devksh930.hr.infrastructure.command.JobRepository;
@@ -26,10 +28,10 @@ public class EmployeeJobChangeService {
 		final EmployeeJobChangeCommand command
 	) {
 		final Employee employee = employeeRepository.findByEmployeeIdFetchJobAndManageDepartment(command.employeeId())
-			.orElseThrow();
+			.orElseThrow(EmployeeNotFoundException::new);
 
 		final Job changeJob = jobRepository.findById(command.jobId())
-			.orElseThrow();
+			.orElseThrow(JobNotFoundException::new);
 
 		saveJobHistory(
 			employee,

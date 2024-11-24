@@ -56,4 +56,17 @@ public class Job {
 	public int hashCode() {
 		return jobId.hashCode();
 	}
+
+	public boolean isSalaryAboveMin(BigDecimal salary) {
+		return salary.compareTo(minSalary) >= 0;
+	}
+
+	public boolean isSalaryBelowMax(BigDecimal salary) {
+		return salary.compareTo(maxSalary) <= 0;
+	}
+
+	public boolean isWithinRange(BigDecimal salary) {
+		return isSalaryAboveMin(salary) && isSalaryBelowMax(salary);
+	}
+
 }

@@ -1,6 +1,7 @@
 package me.devksh930.hr.domain.entity;
 
 import static org.assertj.core.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -27,10 +28,10 @@ class EmployeeTest {
 		);
 		final Employee fixture = new Employee(
 			201,
-			"Michael",
-			"Hartstein",
-			"MHARTSTE",
-			"515.123.5555",
+			"KIM",
+			"SUNGHO",
+			"TEST",
+			"123.123.4444",
 			LocalDate.of(
 				1996,
 				2,
@@ -41,6 +42,18 @@ class EmployeeTest {
 			null,
 			null,
 			department
+		);
+
+		fixture.changeInfo(
+			"Michael",
+			"Hartstein",
+			"MHARTSTE",
+			"515.123.5555",
+			LocalDate.of(
+				1996,
+				2,
+				17
+			)
 		);
 
 		assertThat(fixture.getFirstName()).isEqualTo("Michael");
@@ -216,5 +229,89 @@ class EmployeeTest {
 		boolean result = employee.isSameJob(differentJob);
 
 		assertThat(result).isFalse();
+	}
+
+	@Test
+	@DisplayName("퍼센트로 급여를 증가 시킨다")
+	public void testIncreaseSalaryCalc() {
+		Job job = new Job(
+			"DEV",
+			"Developer",
+			new BigDecimal("500.00"),
+			new BigDecimal("1500.00")
+		);
+		Department department = new Department(
+			null,
+			null,
+			null,
+			null
+		);
+		Employee fixture = new Employee(
+			1,
+			"John",
+			"Doe",
+			"john.doe@example.com",
+			"123-456-7890",
+			LocalDate.of(
+				2020,
+				1,
+				1
+			),
+			job,
+			new BigDecimal("1000.00"),
+			0.1,
+			null,
+			department
+		);
+
+		final Double percentage = 0.1; // 10% 증가
+		final BigDecimal expectedNewSalary = new BigDecimal("1100.00"); // 1000 + 10% of 1000
+
+		final BigDecimal newSalary = fixture.increaseSalaryCalc(percentage);
+
+		assertEquals(
+			0,
+			expectedNewSalary.compareTo(newSalary)
+		);
+	}
+
+	@Test
+	@DisplayName("급여 증가가 범위 내에 있는지 테스트")
+	public void testIsIncreaseSalary() {
+		Job job = new Job(
+			"DEV",
+			"Developer",
+			new BigDecimal("500.00"),
+			new BigDecimal("1500.00")
+		);
+		Department department = new Department(
+			null,
+			null,
+			null,
+			null
+		);
+		Employee fixture = new Employee(
+			1,
+			"John",
+			"Doe",
+			"john.doe@example.com",
+			"123-456-7890",
+			LocalDate.of(
+				2020,
+				1,
+				1
+			),
+			job,
+			new BigDecimal("1000.00"),
+			0.1,
+			null,
+			department
+		);
+
+		Double percentage = 0.10; // 10% 증가
+		assertTrue(fixture.isIncreaseSalary(percentage));
+
+		percentage = 1.0; // 100% 증가
+		assertFalse(fixture.isIncreaseSalary(percentage));
 	}
 }

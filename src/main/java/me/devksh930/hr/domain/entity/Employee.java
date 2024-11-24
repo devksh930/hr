@@ -145,4 +145,16 @@ public class Employee {
 		this.department = changeDepartment;
 		this.manager = changeDepartment.getManager();
 	}
+
+	public BigDecimal increaseSalaryCalc(final Double percentage) {
+		if(this.salary == null) {
+			this.salary = BigDecimal.ZERO;
+		}
+		final BigDecimal incrementAmount = this.salary.multiply(BigDecimal.valueOf(percentage));
+		return this.salary.add(incrementAmount);
+	}
+
+	public boolean isIncreaseSalary(final Double percentage) {
+		return this.job.isWithinRange(increaseSalaryCalc(percentage));
+	}
 }
