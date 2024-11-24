@@ -2,9 +2,8 @@ package me.devksh930.hr.domain.entity;
 
 import java.time.LocalDate;
 
+import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.IdClass;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
@@ -20,18 +19,12 @@ import lombok.NoArgsConstructor;
 		@UniqueConstraint(name = "uk_job_history_employee_start_date", columnNames = {"employee_id", "start_date"})
 	}
 )
-@IdClass(JobHistoryId.class)
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class JobHistory {
 
-	@Id
-	@ManyToOne
-	@JoinColumn(name = "employee_id", nullable = false)
-	private Employee employee;
-
-	@Id
-	private LocalDate startDate;
+	@EmbeddedId
+	private JobHistoryId id;
 
 	private LocalDate endDate;
 
@@ -44,16 +37,34 @@ public class JobHistory {
 	private Department department;
 
 	public JobHistory(
-		final Employee employee,
+		final Integer employeeId,
 		final LocalDate startDate,
 		final LocalDate endDate,
 		final Job job,
 		final Department department
 	) {
-		this.employee = employee;
-		this.startDate = startDate;
+		this.id = new JobHistoryId(
+			employeeId,
+			startDate
+		);
 		this.endDate = endDate;
 		this.job = job;
 		this.department = department;
+	}
+
+	@Override
+	public boolean equals(final Object o) {
+		if (this == o)
+			return true;
+		if (o == null || getClass() != o.getClass())
+			return false;
+
+		final JobHistory that = (JobHistory)o;
+		return id.equals(that.id);
+	}
+
+	@Override
+	public int hashCode() {
+		return id.hashCode();
 	}
 }

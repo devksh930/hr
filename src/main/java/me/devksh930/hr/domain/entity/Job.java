@@ -40,4 +40,20 @@ public class Job {
 		this.minSalary = minSalary;
 		this.maxSalary = maxSalary;
 	}
+
+	@Override
+	public boolean equals(final Object o) {
+		if (this == o)
+			return true;
+		if (o == null || getClass() != o.getClass())
+			return false;
+
+		final Job job = (Job)o;
+		return jobId.equals(job.jobId);
+	}
+
+	@Override
+	public int hashCode() {
+		return jobId.hashCode();
+	}
 }
