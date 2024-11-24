@@ -3,8 +3,11 @@ package me.devksh930.hr.domain.entity;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
+import org.springframework.util.StringUtils;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Index;
 import jakarta.persistence.JoinColumn;
@@ -38,7 +41,7 @@ public class Employee {
 
 	private LocalDate hireDate;
 
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "job_id", nullable = false)
 	private Job job;
 
@@ -48,11 +51,11 @@ public class Employee {
 	@Column(name = "commission_pct", columnDefinition = "decimal")
 	private Double commissionPct;
 
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "manager_id")
 	private Employee manager;
 
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "department_id", nullable = false)
 	private Department department;
 
@@ -80,5 +83,66 @@ public class Employee {
 		this.commissionPct = commissionPct;
 		this.manager = manager;
 		this.department = department;
+	}
+
+	public void changeInfo(
+		final String firstName,
+		final String lastName,
+		final String email,
+		final String phoneNumber,
+		final LocalDate hireDate
+	) {
+		updateFirstName(firstName);
+		updateLastName(lastName);
+		updatePhoneNumber(phoneNumber);
+		updateEmail(email);
+		updateHireDate(hireDate);
+	}
+
+	private void updateFirstName(final String firstName) {
+		this.firstName = firstName;
+	}
+
+	private void updateLastName(final String lastName) {
+		if (StringUtils.hasText(lastName)) {
+			this.lastName = lastName;
+		}
+	}
+
+	private void updatePhoneNumber(final String phoneNumber) {
+		this.phoneNumber = phoneNumber;
+	}
+
+	private void updateEmail(final String email) {
+		if (StringUtils.hasText(email)) {
+			this.email = email;
+		}
+	}
+
+	private void updateHireDate(final LocalDate hireDate) {
+		if (hireDate != null) {
+			this.hireDate = hireDate;
+		}
+	}
+
+	public void changeJob(final Job changeJbo) {
+		if (isSameJob(changeJbo)) {
+			return;
+		}
+		this.job = changeJbo;
+	}
+
+	public boolean isSameJob(final Job changeJob) {
+		return this.job.equals(changeJob);
+	}
+
+	public void changeDepartment(
+		final Department changeDepartment
+	) {
+		if (this.department.equals(changeDepartment)) {
+			return;
+		}
+		this.department = changeDepartment;
+		this.manager = changeDepartment.getManager();
 	}
 }
