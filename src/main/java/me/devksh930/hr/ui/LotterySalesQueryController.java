@@ -1,28 +1,28 @@
 package me.devksh930.hr.ui;
 
-import org.springframework.data.domain.PageImpl;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import lombok.RequiredArgsConstructor;
-import me.devksh930.hr.application.service.LotterySaleQueryService;
-import me.devksh930.hr.dto.response.LotterySaleReportResponse;
+import me.devksh930.hr.common.response.DataGovernmentApiResponse;
+import me.devksh930.hr.domain.model.LotterySalesReportQuery;
+import me.devksh930.hr.infrastructure.client.LotterySalesClient;
 
 @RestController
 @RequestMapping("/lottery")
 @RequiredArgsConstructor
 public class LotterySalesQueryController {
-	private final LotterySaleQueryService lotterySaleQueryService;
+	private final LotterySalesClient lotterySalesClient;
 
 	@GetMapping("/sales-report")
-	public PageImpl<LotterySaleReportResponse> getLotterySaleReport(
+	public DataGovernmentApiResponse<LotterySalesReportQuery> getLotterySaleReport(
 		@RequestParam int page,
 		@RequestParam int size
 	) {
-		return lotterySaleQueryService.queryLotteryReport(PageRequest.of(page,
-			size));
+
+		return lotterySalesClient.getLotterySalesReport(page,
+			size);
 	}
 }

@@ -3,7 +3,7 @@ package me.devksh930.hr.common.config;
 import feign.Response;
 import feign.codec.ErrorDecoder;
 import lombok.extern.slf4j.Slf4j;
-import me.devksh930.hr.exception.ExternalApiException;
+import me.devksh930.hr.exception.GorvenmentApiCallException;
 
 @Slf4j
 public class DataGovernmentFeignClientDecoder implements ErrorDecoder {
@@ -18,6 +18,6 @@ public class DataGovernmentFeignClientDecoder implements ErrorDecoder {
 		log.error(response.request().url().toString());
 		log.error(s);
 		log.error("====================================================");
-		return new ExternalApiException();
+		return new GorvenmentApiCallException();
 	}
 }
