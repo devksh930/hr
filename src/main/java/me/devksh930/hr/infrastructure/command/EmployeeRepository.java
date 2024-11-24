@@ -11,5 +11,5 @@ import me.devksh930.hr.domain.entity.Employee;
 public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
 
 	@EntityGraph(attributePaths = {"job","manager", "department"})
-	Optional<Employee> findByEmployeeId(@Param("employeeId") Integer employeeId);
+	Optional<Employee> findByEmployeeIdFetchJobAndManageDepartment(@Param("employeeId") Integer employeeId);
 }

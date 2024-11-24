@@ -25,7 +25,7 @@ public class EmployeeJobChangeService {
 	public void changeJob(
 		final EmployeeJobChangeCommand command
 	) {
-		final Employee employee = employeeRepository.findByEmployeeId(command.employeeId())
+		final Employee employee = employeeRepository.findByEmployeeIdFetchJobAndManageDepartment(command.employeeId())
 			.orElseThrow();
 
 		final Job changeJob = jobRepository.findById(command.jobId())
