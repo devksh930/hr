@@ -1,17 +1,16 @@
-package me.devksh930.hr.domain.model;
+package me.devksh930.hr.domain.model
 
-public record DepartmentQuery(
-	Integer departmentId,
-	String departmentName,
-	Integer manageId,
-	Integer locationId,
-	String streetAddress,
-	String postalCode,
-	String city,
-	String stateProvince,
-	String countryId,
-	String countryName,
-	Integer regionId,
-	String regionName
-) {
-}
+data class DepartmentQuery(
+    val departmentId: Int,
+    val departmentName: String,
+    val manageId: Int,
+    val locationId: Int,
+    val streetAddress: String,
+    val postalCode: String,
+    val city: String,
+    val stateProvince: String,
+    val countryId: String,
+    val countryName: String,
+    val regionId: Int,
+    val regionName: String
+)

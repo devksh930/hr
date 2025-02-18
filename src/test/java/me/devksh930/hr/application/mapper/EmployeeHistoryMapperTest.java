@@ -37,12 +37,12 @@ class EmployeeHistoryMapperTest {
 		EmployeeJobHistoryResponse response = employeeHistoryMapper.employeeHistoryQueryToResponse(query);
 
 		assertThat(response).isNotNull();
-		assertThat(response.employeeId()).isEqualTo(query.employeeId());
-		assertThat(response.startDate()).isEqualTo(query.startDate());
-		assertThat(response.endDate()).isEqualTo(query.endDate());
-		assertThat(response.jobId()).isEqualTo(query.jobId());
-		assertThat(response.jobTitle()).isEqualTo(query.jobTitle());
-		assertThat(response.departmentId()).isEqualTo(query.departmentId());
-		assertThat(response.departmentName()).isEqualTo(query.departmentName());
+		assertThat(response.employeeId()).isEqualTo(query.getEmployeeId());
+		assertThat(response.startDate()).isEqualTo(query.getStartDate());
+		assertThat(response.endDate()).isEqualTo(query.getEndDate());
+		assertThat(response.jobId()).isEqualTo(query.getJobId());
+		assertThat(response.jobTitle()).isEqualTo(query.getJobTitle());
+		assertThat(response.departmentId()).isEqualTo(query.getDepartmentId());
+		assertThat(response.departmentName()).isEqualTo(query.getDepartmentName());
 	}
 }

@@ -12,18 +12,18 @@ public class DepartmentMapper {
 		DepartmentQuery model
 	) {
 		return new DepartmentResponse(
-			model.departmentId(),
-			model.departmentName(),
-			model.manageId(),
-			model.locationId(),
-			model.streetAddress(),
-			model.postalCode(),
-			model.city(),
-			model.stateProvince(),
-			model.countryId(),
-			model.countryName(),
-			model.regionId(),
-			model.regionName()
+			model.getDepartmentId(),
+			model.getDepartmentName(),
+			model.getManageId(),
+			model.getLocationId(),
+			model.getStreetAddress(),
+			model.getPostalCode(),
+			model.getCity(),
+			model.getStateProvince(),
+			model.getCountryId(),
+			model.getCountryName(),
+			model.getRegionId(),
+			model.getRegionName()
 		);
 	}
 }

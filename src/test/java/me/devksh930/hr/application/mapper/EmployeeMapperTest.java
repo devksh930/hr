@@ -47,43 +47,43 @@ class EmployeeMapperTest {
 		assertAll(
 			() -> assertNotNull(response),
 			() -> assertEquals(
-				fixture.id(),
+				fixture.getId(),
 				response.id()
 			),
 			() -> assertEquals(
-				fixture.firstName(),
+				fixture.getFirstName(),
 				response.firstName()
 			),
 			() -> assertEquals(
-				fixture.lastName(),
+				fixture.getLastName(),
 				response.lastName()
 			),
 			() -> assertEquals(
-				fixture.email(),
+				fixture.getEmail(),
 				response.email()
 			),
 			() -> assertEquals(
-				fixture.phoneNumber(),
+				fixture.getPhoneNumber(),
 				response.phoneNumber()
 			),
 			() -> assertEquals(
-				fixture.hireDate(),
+				fixture.getHireDate(),
 				response.hireDate()
 			),
 			() -> assertEquals(
-				fixture.departmentId(),
+				fixture.getDepartmentId(),
 				response.departmentId()
 			),
 			() -> assertEquals(
-				fixture.departmentName(),
+				fixture.getDepartmentName(),
 				response.departmentName()
 			),
 			() -> assertEquals(
-				fixture.jobId(),
+				fixture.getJobId(),
 				response.jobId()
 			),
 			() -> assertEquals(
-				fixture.jobTitle(),
+				fixture.getJobTitle(),
 				response.jobTitle()
 			)
 		);
@@ -108,7 +108,7 @@ class EmployeeMapperTest {
 			"United States of America",
 			"Americas",
 			new BigDecimal("8300.00"),
-			null,
+			new BigDecimal("0.15"),
 			205
 		);
 
@@ -117,67 +117,67 @@ class EmployeeMapperTest {
 		assertAll(
 			() -> assertNotNull(response),
 			() -> assertEquals(
-				fixture.id(),
+				fixture.getId(),
 				response.id()
 			),
 			() -> assertEquals(
-				fixture.firstName(),
+				fixture.getFirstName(),
 				response.firstName()
 			),
 			() -> assertEquals(
-				fixture.lastName(),
+				fixture.getLastName(),
 				response.lastName()
 			),
 			() -> assertEquals(
-				fixture.jobId(),
+				fixture.getJobId(),
 				response.jobId()
 			),
 			() -> assertEquals(
-				fixture.jobTitle(),
+				fixture.getJobTitle(),
 				response.jobTitle()
 			),
 			() -> assertEquals(
-				fixture.departmentId(),
+				fixture.getDepartmentId(),
 				response.departmentId()
 			),
 			() -> assertEquals(
-				fixture.departmentName(),
+				fixture.getDepartmentName(),
 				response.departmentName()
 			),
 			() -> assertEquals(
-				fixture.locationId(),
+				fixture.getLocationId(),
 				response.locationId()
 			),
 			() -> assertEquals(
-				fixture.city(),
+				fixture.getCity(),
 				response.city()
 			),
 			() -> assertEquals(
-				fixture.stateProvince(),
+				fixture.getStateProvince(),
 				response.stateProvince()
 			),
 			() -> assertEquals(
-				fixture.countryId(),
+				fixture.getCountryId(),
 				response.countryId()
 			),
 			() -> assertEquals(
-				fixture.countryName(),
+				fixture.getCountryName(),
 				response.countryName()
 			),
 			() -> assertEquals(
-				fixture.regionName(),
+				fixture.getRegionName(),
 				response.regionName()
 			),
 			() -> assertEquals(
-				fixture.salary(),
+				fixture.getSalary(),
 				response.salary()
 			),
 			() -> assertEquals(
-				fixture.commissionPct(),
+				fixture.getCommissionPct(),
 				response.commissionPct()
 			),
 			() -> assertEquals(
-				fixture.managerId(),
+				fixture.getManagerId(),
 				response.managerId()
 			)
 		);

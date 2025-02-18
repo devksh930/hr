@@ -31,18 +31,18 @@ class DepartmentMapperTest {
 
 		final DepartmentResponse response = departmentQueryService.departmentQueryToResponse(departmentQuery);
 
-		assertThat(response.departmentId()).isEqualTo(departmentQuery.departmentId());
-		assertThat(response.departmentName()).isEqualTo(departmentQuery.departmentName());
-		assertThat(response.manageId()).isEqualTo(departmentQuery.manageId());
-		assertThat(response.locationId()).isEqualTo(departmentQuery.locationId());
-		assertThat(response.streetAddress()).isEqualTo(departmentQuery.streetAddress());
-		assertThat(response.postalCode()).isEqualTo(departmentQuery.postalCode());
-		assertThat(response.city()).isEqualTo(departmentQuery.city());
-		assertThat(response.stateProvince()).isEqualTo(departmentQuery.stateProvince());
-		assertThat(response.countryId()).isEqualTo(departmentQuery.countryId());
-		assertThat(response.countryName()).isEqualTo(departmentQuery.countryName());
-		assertThat(response.regionId()).isEqualTo(departmentQuery.regionId());
-		assertThat(response.regionName()).isEqualTo(departmentQuery.regionName());
+		assertThat(response.departmentId()).isEqualTo(departmentQuery.getDepartmentId());
+		assertThat(response.departmentName()).isEqualTo(departmentQuery.getDepartmentName());
+		assertThat(response.manageId()).isEqualTo(departmentQuery.getManageId());
+		assertThat(response.locationId()).isEqualTo(departmentQuery.getLocationId());
+		assertThat(response.streetAddress()).isEqualTo(departmentQuery.getStreetAddress());
+		assertThat(response.postalCode()).isEqualTo(departmentQuery.getPostalCode());
+		assertThat(response.city()).isEqualTo(departmentQuery.getCity());
+		assertThat(response.stateProvince()).isEqualTo(departmentQuery.getStateProvince());
+		assertThat(response.countryId()).isEqualTo(departmentQuery.getCountryId());
+		assertThat(response.countryName()).isEqualTo(departmentQuery.getCountryName());
+		assertThat(response.regionId()).isEqualTo(departmentQuery.getRegionId());
+		assertThat(response.regionName()).isEqualTo(departmentQuery.getRegionName());
 	}
 
 }

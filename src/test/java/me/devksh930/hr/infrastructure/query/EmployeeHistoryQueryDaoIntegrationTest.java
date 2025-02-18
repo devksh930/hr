@@ -41,10 +41,10 @@ class EmployeeHistoryQueryDaoIntegrationTest extends DataBaseIntegrationTest {
 		);
 
 		assertThat(jobHistoryQueries).isNotEmpty();
-		assertThat(jobHistoryQueries.get(0).employeeId()).isEqualTo(101);
-		assertThat(jobHistoryQueries.get(0).startDate()).isNotNull();
-		assertThat(jobHistoryQueries.get(0).jobId()).isNotBlank();
-		assertThat(jobHistoryQueries.get(0).jobTitle()).isNotBlank();
+		assertThat(jobHistoryQueries.get(0).getEmployeeId()).isEqualTo(101);
+		assertThat(jobHistoryQueries.get(0).getStartDate()).isNotNull();
+		assertThat(jobHistoryQueries.get(0).getJobId()).isNotBlank();
+		assertThat(jobHistoryQueries.get(0).getJobTitle()).isNotBlank();
 	}
 
 	@Test

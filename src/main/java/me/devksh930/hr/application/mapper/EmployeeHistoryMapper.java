@@ -13,13 +13,13 @@ public class EmployeeHistoryMapper {
 	) {
 
 		return new EmployeeJobHistoryResponse(
-			model.employeeId(),
-			model.startDate(),
-			model.endDate(),
-			model.jobId(),
-			model.jobTitle(),
-			model.departmentId(),
-			model.departmentName()
+			model.getEmployeeId(),
+			model.getStartDate(),
+			model.getEndDate(),
+			model.getJobId(),
+			model.getJobTitle(),
+			model.getDepartmentId(),
+			model.getDepartmentName()
 		);
 	}
 

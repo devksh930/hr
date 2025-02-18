@@ -1,17 +1,17 @@
-package me.devksh930.hr.domain.model;
+package me.devksh930.hr.domain.model
 
-import java.time.LocalDate;
+import java.time.LocalDate
 
-public record EmployeeQuery(
-	Integer id,
-	String firstName,
-	String lastName,
-	String email,
-	String phoneNumber,
-	LocalDate hireDate,
-	String departmentId,
-	String departmentName,
-	String jobId,
-	String jobTitle
-) {
-}
+
+data class EmployeeQuery(
+     val id: Int,
+     val firstName: String,
+     val lastName: String,
+     val email: String,
+     val phoneNumber: String,
+     val hireDate: LocalDate,
+     val departmentId: String,
+     val departmentName: String,
+     val jobId: String,
+     val jobTitle: String
+)

@@ -12,16 +12,15 @@ public class LotterySalesMapper {
 	public LotterySaleReportResponse lotterySalesReportQueryToResponse(
 		final LotterySalesReportQuery model
 	) {
-		log.error(model.toString());
 		return new LotterySaleReportResponse(
-			model.category(),
-			model.year(),
-			model.onlineLottery(),
-			model.growthRate(),
-			model.electronicLottery(),
-			model.instantLottery(),
-			model.combinedLottery(),
-			model.totalAmount()
+			model.getCategory(),
+			model.getYear(),
+			model.getOnlineLottery(),
+			model.getGrowthRate(),
+			model.getElectronicLottery(),
+			model.getInstantLottery(),
+			model.getCombinedLottery(),
+			model.getTotalAmount()
 		);
 	}
 }

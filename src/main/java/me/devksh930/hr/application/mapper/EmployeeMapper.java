@@ -16,16 +16,16 @@ public class EmployeeMapper {
 		final EmployeeQuery model
 	) {
 		return new EmployeeQueryResponse(
-			model.id(),
-			model.firstName(),
-			model.lastName(),
-			model.email(),
-			model.phoneNumber(),
-			model.hireDate(),
-			model.departmentId(),
-			model.departmentName(),
-			model.jobId(),
-			model.jobTitle()
+			model.getId(),
+			model.getFirstName(),
+			model.getLastName(),
+			model.getEmail(),
+			model.getPhoneNumber(),
+			model.getHireDate(),
+			model.getDepartmentId(),
+			model.getDepartmentName(),
+			model.getJobId(),
+			model.getJobTitle()
 		);
 	}
 
@@ -34,22 +34,22 @@ public class EmployeeMapper {
 		EmployeeDetailQuery model
 	) {
 		return new EmployeeDetailQueryResponse(
-			model.id(),
-			model.firstName(),
-			model.lastName(),
-			model.jobId(),
-			model.jobTitle(),
-			model.departmentId(),
-			model.departmentName(),
-			model.locationId(),
-			model.city(),
-			model.stateProvince(),
-			model.countryId(),
-			model.countryName(),
-			model.regionName(),
-			model.salary(),
-			model.commissionPct(),
-			model.managerId()
+			model.getId(),
+			model.getFirstName(),
+			model.getLastName(),
+			model.getJobId(),
+			model.getJobTitle(),
+			model.getDepartmentId(),
+			model.getDepartmentName(),
+			model.getLocationId(),
+			model.getCity(),
+			model.getStateProvince(),
+			model.getCountryId(),
+			model.getCountryName(),
+			model.getRegionName(),
+			model.getSalary(),
+			model.getCommissionPct(),
+			model.getManagerId()
 		);
 	}
 

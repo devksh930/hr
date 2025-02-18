@@ -24,7 +24,7 @@ class DepartmentQueryDaoTest extends DataBaseIntegrationTest {
 		List<DepartmentQuery> departments = departmentQueryDao.queryDepartmentWithPaging(pageSize, offset);
 
 		assertThat(departments).hasSize(10);
-		assertThat(departments.get(0).departmentName()).isNotBlank();
+		assertThat(departments.get(0).getDepartmentName()).isNotBlank();
 	}
 
 	@Test

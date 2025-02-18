@@ -1,14 +1,13 @@
-package me.devksh930.hr.domain.model;
+package me.devksh930.hr.domain.model
 
-import java.time.LocalDate;
+import java.time.LocalDate
 
-public record EmployeeJobHistoryQuery(
-	Integer employeeId,
-	LocalDate startDate,
-	LocalDate endDate,
-	String jobId,
-	String jobTitle,
-	Integer departmentId,
-	String departmentName
-) {
-}
+data class EmployeeJobHistoryQuery(
+   val employeeId: Int,
+   val startDate: LocalDate,
+   val endDate: LocalDate,
+   val jobId: String,
+   val jobTitle: String,
+   val departmentId: Int,
+   val departmentName: String
+)

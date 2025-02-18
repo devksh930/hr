@@ -1,23 +1,22 @@
-package me.devksh930.hr.domain.model;
+package me.devksh930.hr.domain.model
 
-import java.math.BigDecimal;
+import java.math.BigDecimal
 
-public record EmployeeDetailQuery(
-	Integer id,
-	String firstName,
-	String lastName,
-	String jobId,
-	String jobTitle,
-	Integer departmentId,
-	String departmentName,
-	Integer locationId,
-	String city,
-	String stateProvince,
-	String countryId,
-	String countryName,
-	String regionName,
-	BigDecimal salary,
-	BigDecimal commissionPct,
-	Integer managerId
-) {
-}
+data class EmployeeDetailQuery(
+    val id: Int,
+    val firstName: String,
+    val lastName: String,
+    val jobId: String,
+    val jobTitle: String,
+    val departmentId: Int,
+    val departmentName: String,
+    val locationId: Int,
+    val city: String,
+    val stateProvince: String,
+    val countryId: String,
+    val countryName: String,
+    val regionName: String,
+    val salary: BigDecimal,
+    val commissionPct: BigDecimal = BigDecimal.ZERO,
+    val managerId: Int
+)

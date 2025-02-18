@@ -30,7 +30,7 @@ class EmployeeQueryDaoIntegrationTest extends DataBaseIntegrationTest {
 		List<EmployeeQuery> employees = employeeQueryDao.findEmployeePaged(pageRequest);
 
 		assertThat(employees).hasSize(10);
-		assertThat(employees.get(0).jobId()).isNotBlank();
+		assertThat(employees.get(0).getJobId()).isNotBlank();
 	}
 
 	@Test
@@ -61,11 +61,11 @@ class EmployeeQueryDaoIntegrationTest extends DataBaseIntegrationTest {
 		assertThat(employeeDetail).isPresent();
 		EmployeeDetailQuery detail = employeeDetail.get();
 
-		assertThat(detail.id()).isEqualTo(employeeId);
-		assertThat(detail.firstName()).isNotBlank();
-		assertThat(detail.lastName()).isNotBlank();
-		assertThat(detail.jobTitle()).isNotBlank();
-		assertThat(detail.departmentName()).isNotBlank();
+		assertThat(detail.getId()).isEqualTo(employeeId);
+		assertThat(detail.getFirstName()).isNotBlank();
+		assertThat(detail.getLastName()).isNotBlank();
+		assertThat(detail.getJobTitle()).isNotBlank();
+		assertThat(detail.getDepartmentName()).isNotBlank();
 	}
 
 	@Test
